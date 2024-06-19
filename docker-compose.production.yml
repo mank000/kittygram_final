@@ -14,14 +14,14 @@ services:
   backend:
     depends_on: 
       - db
-    build: ./backend/
+    image: mank000/kittygram_backend
     env_file: .env.example
     volumes:
       - static:/backend_static/
       - media:/media/
   frontend:
     env_file: .env.example
-    build: ./frontend/
+    image: mank000/kittygram_frontend
     command: cp -r /app/build/. /frontend_static/
     volumes:
       - static:/frontend_static
@@ -29,7 +29,7 @@ services:
     depends_on:
       - frontend
       - backend
-    build: ./gateway/
+    image: mank000/kittygram_gateway
     env_file: .env.example
     ports:
       - 8000:80
