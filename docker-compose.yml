@@ -31,7 +31,7 @@ services:
     depends_on:
       - frontend
       - backend
-    build: ./gateway/
+    build: ./nginx/
     env_file: .env.example
     ports:
       - 9000:80
